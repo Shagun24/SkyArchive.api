@@ -1,0 +1,42 @@
+@baseUrl = http://localhost:5080
+
+### Health
+GET {{baseUrl}}/api/health
+
+### List everything in the starter catalogue
+GET {{baseUrl}}/api/components
+
+### Filter by planet
+GET {{baseUrl}}/api/components?planet=Mars
+
+### Click a component / generate its story
+POST {{baseUrl}}/api/agent/explore
+Content-Type: application/json
+
+{
+  "componentId": "apollo-11-descent-stage",
+  "audience": "students aged 10-15",
+  "includeImages": true
+}
+
+### Ask a follow-up question
+POST {{baseUrl}}/api/agent/ask
+Content-Type: application/json
+
+{
+  "componentId": "apollo-11-descent-stage",
+  "question": "Why did the astronauts leave this stage on the Moon?",
+  "audience": "students aged 10-15"
+}
+
+### Ask why Ingenuity stopped flying
+POST {{baseUrl}}/api/agent/ask
+Content-Type: application/json
+
+{
+  "componentId": "ingenuity-helicopter",
+  "question": "Why did Ingenuity stop flying?"
+}
+
+### Search the NASA Image and Video Library
+GET {{baseUrl}}/api/nasa/images?query=apollo%2011%20lunar%20module
